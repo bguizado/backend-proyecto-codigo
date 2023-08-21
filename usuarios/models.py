@@ -13,25 +13,24 @@ class Usuarios(models.Model):
         (PASAPORTE, "Pasaporte"),
     ]
     
-    GESTOR = "GESTOR",
-    SUPERVISOR = "SUPERVISOR",
-    ANALISTA = "ANALISTA",
+    GESTOR = "GESTOR"
+    SUPERVISOR = "SUPERVISOR"
+    ANALISTA = "ANALISTA"
     CONTROLLER = "CONTROLLER"
     TipoUsuario = [
         (GESTOR, "Gestor"),
         (SUPERVISOR, "Supervisor"),
         (ANALISTA, "Analista"),
-        (CONTROLLER, "Controller")
-
+        (CONTROLLER, "Controller"),
     ]
 
     id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=150)
+    nombres = models.CharField(max_length=150)
     primerApellido = models.CharField(max_length=150, db_column='apellido_paterno')
     segundoApellido = models.CharField(max_length=150, db_column='apellido_materno')
-    tipoDocumento = models.CharField(max_length=11, choices=TipoDocumento, db_column='tipo_documento')
+    tipoDocumento = models.CharField(choices=TipoDocumento, db_column='tipo_documento')
     numeroDocumento = models.IntegerField(unique=True)
-    tipoUsuario = models.CharField(max_length=10, choices=TipoUsuario, db_column='tipo_usuario')
+    tipoUsuario = models.CharField(choices=TipoUsuario, db_column='tipo_usuario')
     correo = models.EmailField(max_length=254, unique=True)
     celular = PhoneNumberField(null=False, blank=False)
     fechaCreacion = models.DateTimeField(auto_now_add=True, db_column='fecha_creacion')
