@@ -1,8 +1,9 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.models import AbstractBaseUser
 
 
-class Usuarios(models.Model):
+class UsuarioModel(AbstractBaseUser):
     
     DNI = "DNI"
     CARNET = "CARNET EXT."
